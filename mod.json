@@ -1,0 +1,232 @@
+{
+	"geode": "5.0.0-beta.3",
+	"gd": { "win": "2.2081" },
+	"id": "nachoaverage.menutravel",
+	"name": "MenuTravel",
+	"version": "v2.0.0",
+	"developer": "NachoAverage",
+	"description": "Travel to menus and levels in one button!",
+
+	"settings": {
+		"open-search": {
+			"type": "keybind",
+			"name": "Travel: Level Search",
+			"default": [ "F1" ]
+		},
+		"open-main-menu": {
+			"type": "keybind",
+			"name": "Travel: Main Menu",
+			"default": [ "F2" ]
+		},
+
+		"level-id-1": {
+			"type": "string",
+			"name": "Level Slot 1 ID",
+			"default": "0"
+		},
+		"open-level-1": {
+			"type": "keybind",
+			"name": "Open Level Slot 1",
+			"default": [ "F3" ]
+		},
+
+		"level-id-2": {
+			"type": "string",
+			"name": "Level Slot 2 ID",
+			"default": "0"
+		},
+		"open-level-2": {
+			"type": "keybind",
+			"name": "Open Level Slot 2",
+			"default": [ "F4" ]
+		},
+
+		"level-id-3": {
+			"type": "string",
+			"name": "Level Slot 3 ID",
+			"default": "0"
+		},
+		"open-level-3": {
+			"type": "keybind",
+			"name": "Open Level Slot 3",
+			"default": [ "F5" ]
+		},
+
+		"level-id-4": {
+			"type": "string",
+			"name": "Level Slot 4 ID",
+			"default": "0"
+		},
+		"open-level-4": {
+			"type": "keybind",
+			"name": "Open Level Slot 4",
+			"default": [ "F6" ]
+		},
+
+		"level-id-5": {
+			"type": "string",
+			"name": "Level Slot 5 ID",
+			"default": "0"
+		},
+		"open-level-5": {
+			"type": "keybind",
+			"name": "Open Level Slot 5",
+			"default": [ "F7" ]
+		},
+
+		"level-id-6": {
+			"type": "string",
+			"name": "Level Slot 6 ID",
+			"default": "0"
+		},
+		"open-level-6": {
+			"type": "keybind",
+			"name": "Open Level Slot 6",
+			"default": [ "F8" ]
+		},
+
+		"level-id-7": {
+			"type": "string",
+			"name": "Level Slot 7 ID",
+			"default": "0"
+		},
+		"open-level-7": {
+			"type": "keybind",
+			"name": "Open Level Slot 7",
+			"default": [ "F9" ]
+		},
+
+		"level-id-8": {
+			"type": "string",
+			"name": "Level Slot 8 ID",
+			"default": "0"
+		},
+		"open-level-8": {
+			"type": "keybind",
+			"name": "Open Level Slot 8",
+			"default": [ "F10" ]
+		},
+
+		"level-id-9": {
+			"type": "string",
+			"name": "Level Slot 9 ID",
+			"default": "0"
+		},
+		"open-level-9": {
+			"type": "keybind",
+			"name": "Open Level Slot 9",
+			"default": [ "F11" ]
+		},
+
+		"level-id-10": {
+			"type": "string",
+			"name": "Level Slot 10 ID",
+			"default": "0"
+		},
+		"open-level-10": {
+			"type": "keybind",
+			"name": "Open Level Slot 10",
+			"default": [ "F12" ]
+		},
+
+		"level-id-11": {
+			"type": "string",
+			"name": "Level Slot 11 ID",
+			"default": "0"
+		},
+		"open-level-11": {
+			"type": "keybind",
+			"name": "Open Level Slot 11"
+		},
+
+		"level-id-12": {
+			"type": "string",
+			"name": "Level Slot 12 ID",
+			"default": "0"
+		},
+		"open-level-12": {
+			"type": "keybind",
+			"name": "Open Level Slot 12"
+		},
+
+		"level-id-13": {
+			"type": "string",
+			"name": "Level Slot 13 ID",
+			"default": "0"
+		},
+		"open-level-13": {
+			"type": "keybind",
+			"name": "Open Level Slot 13"
+		},
+
+		"level-id-14": {
+			"type": "string",
+			"name": "Level Slot 14 ID",
+			"default": "0"
+		},
+		"open-level-14": {
+			"type": "keybind",
+			"name": "Open Level Slot 14"
+		},
+
+		"level-id-15": {
+			"type": "string",
+			"name": "Level Slot 15 ID",
+			"default": "0"
+		},
+		"open-level-15": {
+			"type": "keybind",
+			"name": "Open Level Slot 15"
+		},
+
+		"level-id-16": {
+			"type": "string",
+			"name": "Level Slot 16 ID",
+			"default": "0"
+		},
+		"open-level-16": {
+			"type": "keybind",
+			"name": "Open Level Slot 16"
+		},
+
+		"level-id-17": {
+			"type": "string",
+			"name": "Level Slot 17 ID",
+			"default": "0"
+		},
+		"open-level-17": {
+			"type": "keybind",
+			"name": "Open Level Slot 17"
+		},
+
+		"level-id-18": {
+			"type": "string",
+			"name": "Level Slot 18 ID",
+			"default": "0"
+		},
+		"open-level-18": {
+			"type": "keybind",
+			"name": "Open Level Slot 18"
+		},
+
+		"level-id-19": {
+			"type": "string",
+			"name": "Level Slot 19 ID",
+			"default": "0"
+		},
+		"open-level-19": {
+			"type": "keybind",
+			"name": "Open Level Slot 19"
+		},
+
+		"level-id-20": {
+			"type": "string",
+			"name": "Level Slot 20 ID",
+			"default": "0"
+		},
+		"open-level-20": {
+			"type": "keybind",
+			"name": "Open Level Slot 20"
+		}
+	}
+}
