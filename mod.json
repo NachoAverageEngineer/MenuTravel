@@ -11,12 +11,12 @@
 		"open-search": {
 			"type": "keybind",
 			"name": "Travel: Level Search",
-			"default": [ "F1" ]
+			"default": [ "PLACHOLDER" ]
 		},
 		"open-main-menu": {
 			"type": "keybind",
 			"name": "Travel: Main Menu",
-			"default": [ "F2" ]
+			"default": [ "PLACHOLDER" ]
 		},
 
 		"level-id-1": {
@@ -27,7 +27,7 @@
 		"open-level-1": {
 			"type": "keybind",
 			"name": "Open Level Slot 1",
-			"default": [ "F3" ]
+			"default": [ "PLACHOLDER" ]
 		},
 
 		"level-id-2": {
@@ -38,7 +38,7 @@
 		"open-level-2": {
 			"type": "keybind",
 			"name": "Open Level Slot 2",
-			"default": [ "F4" ]
+			"default": [ "PLACHOLDER" ]
 		},
 
 		"level-id-3": {
@@ -49,7 +49,7 @@
 		"open-level-3": {
 			"type": "keybind",
 			"name": "Open Level Slot 3",
-			"default": [ "F5" ]
+			"default": [ "PLACHOLDER" ]
 		},
 
 		"level-id-4": {
@@ -60,7 +60,7 @@
 		"open-level-4": {
 			"type": "keybind",
 			"name": "Open Level Slot 4",
-			"default": [ "F6" ]
+			"default": [ "PLACHOLDER" ]
 		},
 
 		"level-id-5": {
@@ -71,7 +71,7 @@
 		"open-level-5": {
 			"type": "keybind",
 			"name": "Open Level Slot 5",
-			"default": [ "F7" ]
+			"default": [ "PLACHOLDER" ]
 		},
 
 		"level-id-6": {
@@ -82,7 +82,7 @@
 		"open-level-6": {
 			"type": "keybind",
 			"name": "Open Level Slot 6",
-			"default": [ "F8" ]
+			"default": [ "PLACHOLDER" ]
 		},
 
 		"level-id-7": {
@@ -93,7 +93,7 @@
 		"open-level-7": {
 			"type": "keybind",
 			"name": "Open Level Slot 7",
-			"default": [ "F9" ]
+			"default": [ "PLACHOLDER" ]
 		},
 
 		"level-id-8": {
@@ -104,7 +104,7 @@
 		"open-level-8": {
 			"type": "keybind",
 			"name": "Open Level Slot 8",
-			"default": [ "F10" ]
+			"default": [ "PLACHOLDER" ]
 		},
 
 		"level-id-9": {
@@ -115,7 +115,7 @@
 		"open-level-9": {
 			"type": "keybind",
 			"name": "Open Level Slot 9",
-			"default": [ "F11" ]
+			"default": [ "PLACHOLDER" ]
 		},
 
 		"level-id-10": {
@@ -126,7 +126,7 @@
 		"open-level-10": {
 			"type": "keybind",
 			"name": "Open Level Slot 10",
-			"default": [ "F12" ]
+			"default": [ "PLACHOLDER" ]
 		},
 
 		"level-id-11": {
