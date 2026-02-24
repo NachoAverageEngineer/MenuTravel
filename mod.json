@@ -3,12 +3,10 @@
 	"gd": { "win": "2.2081" },
 	"id": "nachoaverage.menutravel",
 	"name": "MenuTravel",
-	"version": "v3.0.0",
+	"version": "v3.1.0",
 	"developer": "NachoAverage",
 	"description": "Travel to menus and levels in one button!",
-	"details": {
-		"en": "=== Regular Levels ===\n• In 'Level Slot X ID', enter the level ID only.\n• Then set the keybind.\n• Works in most menus.\n\nNote: Does NOT work in certain menus (Geode menu, Level Search menu, etc.).\n\n=== Editor Levels ===\n• Enable 'Show IDs in search' in the Editor Level ID API mod.\n• Open the 'My Levels' page.\n• Look at the number in the top-right of the level.\n• If the number is 3, enter 'e3' into 'Level Slot X ID'.\n• Then set the keybind."
-	},
+	"tags": [ "gameplay", "enhancement", "interface", "utility" ],
 	"dependencies": {
 		"cvolton.level-id-api": {
 			"version": "v2.0.0",
