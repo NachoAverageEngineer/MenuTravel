@@ -2,6 +2,7 @@
 #include <Geode/loader/SettingV3.hpp>
 #include <Geode/utils/cocos.hpp>
 
+#include <Geode/binding/EditLevelLayer.hpp>
 #include <Geode/binding/GameLevelManager.hpp>
 #include <Geode/binding/MenuLayer.hpp>
 #include <Geode/binding/LevelSearchLayer.hpp>
@@ -13,16 +14,16 @@
 #include <Geode/binding/LevelEditorLayer.hpp>
 #include <Geode/binding/CCTextInputNode.hpp>
 
+#include <cvolton.level-id-api/include/EditorIDs.hpp>
+
 using namespace geode::prelude;
 
 namespace {
     static bool hasNodeOfTypeRecursive(cocos2d::CCNode* node, std::function<bool(cocos2d::CCNode*)> pred) {
         if (!node) return false;
         if (pred(node)) return true;
-
         auto children = node->getChildren();
         if (!children) return false;
-
         for (auto* child : CCArrayExt<cocos2d::CCNode*>(children)) {
             if (hasNodeOfTypeRecursive(child, pred)) return true;
         }
@@ -31,17 +32,13 @@ namespace {
 
     static bool isInAttemptUnpaused() {
         if (PlayLayer::get() == nullptr) return false;
-
         auto director = cocos2d::CCDirector::sharedDirector();
         if (!director) return true;
-
         auto scene = director->getRunningScene();
         if (!scene) return true;
-
         bool hasPause = hasNodeOfTypeRecursive(scene, [](cocos2d::CCNode* n) {
             return typeinfo_cast<PauseLayer*>(n) != nullptr;
             });
-
         return !hasPause;
     }
 
@@ -50,7 +47,6 @@ namespace {
         if (!director) return false;
         auto scene = director->getRunningScene();
         if (!scene) return false;
-
         return hasNodeOfTypeRecursive(scene, [](cocos2d::CCNode* n) {
             return typeinfo_cast<CCTextInputNode*>(n) != nullptr;
             });
@@ -66,47 +62,100 @@ namespace {
     static void openSearchArea() {
         auto director = cocos2d::CCDirector::sharedDirector();
         if (!director) return;
-
         auto scene = LevelSearchLayer::scene(0);
         if (!scene) return;
-
         director->pushScene(scene);
     }
 
     static void openMainMenu() {
         auto director = cocos2d::CCDirector::sharedDirector();
         if (!director) return;
-
         auto scene = MenuLayer::scene(false);
         if (!scene) return;
-
         director->replaceScene(scene);
     }
 
-    static void openLevelId(int id) {
-        if (id <= 0) return;
+    static std::string trim(std::string s) {
+        auto isSpace = [](unsigned char c) { return std::isspace(c) != 0; };
+        while (!s.empty() && isSpace((unsigned char)s.front())) s.erase(s.begin());
+        while (!s.empty() && isSpace((unsigned char)s.back())) s.pop_back();
+        return s;
+    }
 
+    static bool parseTravelTarget(std::string const& inputRaw, bool& outIsEditor, int& outId) {
+        auto input = trim(inputRaw);
+        if (input.empty()) return false;
+        outIsEditor = false;
+        outId = 0;
+        std::string lower = input;
+        for (auto& ch : lower) ch = (char)std::tolower((unsigned char)ch);
+
+        auto tryParseInt = [](std::string const& s, int& v) -> bool {
+            try {
+                size_t idx = 0;
+                long long n = std::stoll(s, &idx, 10);
+                if (idx != s.size()) return false;
+                if (n <= 0 || n > INT32_MAX) return false;
+                v = (int)n;
+                return true;
+            }
+            catch (...) {
+                return false;
+            }
+            };
+
+        if (lower.rfind("e:", 0) == 0) {
+            outIsEditor = true;
+            return tryParseInt(input.substr(2), outId);
+        }
+        if (lower.rfind("editor:", 0) == 0) {
+            outIsEditor = true;
+            return tryParseInt(input.substr(7), outId);
+        }
+        if (lower.size() >= 2 && lower[0] == 'e' && std::isdigit((unsigned char)lower[1])) {
+            outIsEditor = true;
+            return tryParseInt(input.substr(1), outId);
+        }
+
+        outIsEditor = false;
+        return tryParseInt(input, outId);
+    }
+
+    static void openEditorLevelByEditorId(int editorId) {
+        if (editorId <= 0) return;
         auto director = cocos2d::CCDirector::sharedDirector();
         if (!director) return;
+        auto level = EditorIDs::getLevelByID(editorId);
+        if (!level) return;
+        auto scene = EditLevelLayer::scene(level);
+        if (!scene) return;
+        director->replaceScene(scene);
+    }
 
+    static void openOnlineLevelById(int id) {
+        if (id <= 0) return;
+        auto director = cocos2d::CCDirector::sharedDirector();
+        if (!director) return;
         auto level = GJGameLevel::create();
         if (!level) return;
-
         level->m_levelID = id;
-
         auto scene = LevelInfoLayer::scene(level, false);
         if (!scene) return;
-
         director->replaceScene(scene);
-
         GameLevelManager::sharedState()->downloadLevel(id, false, 0);
     }
 
-    static int getSlotId(int slot) {
+    static std::string getSlotValue(int slot) {
         auto key = "level-id-" + std::to_string(slot);
-        auto s = Mod::get()->getSettingValue<std::string>(key);
-        try { return std::stoi(s); }
-        catch (...) { return 0; }
+        return Mod::get()->getSettingValue<std::string>(key);
+    }
+
+    static void openSlot(int slot) {
+        bool isEditor = false;
+        int id = 0;
+        if (!parseTravelTarget(getSlotValue(slot), isEditor, id)) return;
+        if (isEditor) openEditorLevelByEditorId(id);
+        else openOnlineLevelById(id);
     }
 
     static void handleKey(char const* settingId, bool down, bool repeat) {
@@ -130,8 +179,7 @@ namespace {
             try { slot = std::stoi(std::string(id.substr(prefix.size()))); }
             catch (...) { slot = 0; }
             if (slot < 1 || slot > 20) return;
-
-            openLevelId(getSlotId(slot));
+            openSlot(slot);
         }
     }
 }

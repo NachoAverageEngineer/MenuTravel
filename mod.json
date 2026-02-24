@@ -1,22 +1,30 @@
 {
-	"geode": "5.0.0-beta.3",
+	"geode": "5.0.1",
 	"gd": { "win": "2.2081" },
 	"id": "nachoaverage.menutravel",
 	"name": "MenuTravel",
-	"version": "v2.0.0",
+	"version": "v3.0.0",
 	"developer": "NachoAverage",
 	"description": "Travel to menus and levels in one button!",
-
+	"details": {
+		"en": "=== Regular Levels ===\n• In 'Level Slot X ID', enter the level ID only.\n• Then set the keybind.\n• Works in most menus.\n\nNote: Does NOT work in certain menus (Geode menu, Level Search menu, etc.).\n\n=== Editor Levels ===\n• Enable 'Show IDs in search' in the Editor Level ID API mod.\n• Open the 'My Levels' page.\n• Look at the number in the top-right of the level.\n• If the number is 3, enter 'e3' into 'Level Slot X ID'.\n• Then set the keybind."
+	},
+	"dependencies": {
+		"cvolton.level-id-api": {
+			"version": "v2.0.0",
+			"importance": "required"
+		}
+	},
 	"settings": {
 		"open-search": {
 			"type": "keybind",
 			"name": "Travel: Level Search",
-			"default": [ "PLACHOLDER" ]
+			"default": []
 		},
 		"open-main-menu": {
 			"type": "keybind",
 			"name": "Travel: Main Menu",
-			"default": [ "PLACHOLDER" ]
+			"default": []
 		},
 
 		"level-id-1": {
@@ -27,7 +35,7 @@
 		"open-level-1": {
 			"type": "keybind",
 			"name": "Open Level Slot 1",
-			"default": [ "PLACHOLDER" ]
+			"default": []
 		},
 
 		"level-id-2": {
@@ -38,7 +46,7 @@
 		"open-level-2": {
 			"type": "keybind",
 			"name": "Open Level Slot 2",
-			"default": [ "PLACHOLDER" ]
+			"default": []
 		},
 
 		"level-id-3": {
@@ -49,7 +57,7 @@
 		"open-level-3": {
 			"type": "keybind",
 			"name": "Open Level Slot 3",
-			"default": [ "PLACHOLDER" ]
+			"default": []
 		},
 
 		"level-id-4": {
@@ -60,7 +68,7 @@
 		"open-level-4": {
 			"type": "keybind",
 			"name": "Open Level Slot 4",
-			"default": [ "PLACHOLDER" ]
+			"default": []
 		},
 
 		"level-id-5": {
@@ -71,7 +79,7 @@
 		"open-level-5": {
 			"type": "keybind",
 			"name": "Open Level Slot 5",
-			"default": [ "PLACHOLDER" ]
+			"default": []
 		},
 
 		"level-id-6": {
@@ -82,7 +90,7 @@
 		"open-level-6": {
 			"type": "keybind",
 			"name": "Open Level Slot 6",
-			"default": [ "PLACHOLDER" ]
+			"default": []
 		},
 
 		"level-id-7": {
@@ -93,7 +101,7 @@
 		"open-level-7": {
 			"type": "keybind",
 			"name": "Open Level Slot 7",
-			"default": [ "PLACHOLDER" ]
+			"default": []
 		},
 
 		"level-id-8": {
@@ -104,7 +112,7 @@
 		"open-level-8": {
 			"type": "keybind",
 			"name": "Open Level Slot 8",
-			"default": [ "PLACHOLDER" ]
+			"default": []
 		},
 
 		"level-id-9": {
@@ -115,7 +123,7 @@
 		"open-level-9": {
 			"type": "keybind",
 			"name": "Open Level Slot 9",
-			"default": [ "PLACHOLDER" ]
+			"default": []
 		},
 
 		"level-id-10": {
@@ -126,7 +134,7 @@
 		"open-level-10": {
 			"type": "keybind",
 			"name": "Open Level Slot 10",
-			"default": [ "PLACHOLDER" ]
+			"default": []
 		},
 
 		"level-id-11": {
@@ -136,7 +144,8 @@
 		},
 		"open-level-11": {
 			"type": "keybind",
-			"name": "Open Level Slot 11"
+			"name": "Open Level Slot 11",
+			"default": []
 		},
 
 		"level-id-12": {
@@ -146,7 +155,8 @@
 		},
 		"open-level-12": {
 			"type": "keybind",
-			"name": "Open Level Slot 12"
+			"name": "Open Level Slot 12",
+			"default": []
 		},
 
 		"level-id-13": {
@@ -156,7 +166,8 @@
 		},
 		"open-level-13": {
 			"type": "keybind",
-			"name": "Open Level Slot 13"
+			"name": "Open Level Slot 13",
+			"default": []
 		},
 
 		"level-id-14": {
@@ -166,7 +177,8 @@
 		},
 		"open-level-14": {
 			"type": "keybind",
-			"name": "Open Level Slot 14"
+			"name": "Open Level Slot 14",
+			"default": []
 		},
 
 		"level-id-15": {
@@ -176,7 +188,8 @@
 		},
 		"open-level-15": {
 			"type": "keybind",
-			"name": "Open Level Slot 15"
+			"name": "Open Level Slot 15",
+			"default": []
 		},
 
 		"level-id-16": {
@@ -186,7 +199,8 @@
 		},
 		"open-level-16": {
 			"type": "keybind",
-			"name": "Open Level Slot 16"
+			"name": "Open Level Slot 16",
+			"default": []
 		},
 
 		"level-id-17": {
@@ -196,7 +210,8 @@
 		},
 		"open-level-17": {
 			"type": "keybind",
-			"name": "Open Level Slot 17"
+			"name": "Open Level Slot 17",
+			"default": []
 		},
 
 		"level-id-18": {
@@ -206,7 +221,8 @@
 		},
 		"open-level-18": {
 			"type": "keybind",
-			"name": "Open Level Slot 18"
+			"name": "Open Level Slot 18",
+			"default": []
 		},
 
 		"level-id-19": {
@@ -216,7 +232,8 @@
 		},
 		"open-level-19": {
 			"type": "keybind",
-			"name": "Open Level Slot 19"
+			"name": "Open Level Slot 19",
+			"default": []
 		},
 
 		"level-id-20": {
@@ -226,7 +243,8 @@
 		},
 		"open-level-20": {
 			"type": "keybind",
-			"name": "Open Level Slot 20"
+			"name": "Open Level Slot 20",
+			"default": []
 		}
 	}
 }
