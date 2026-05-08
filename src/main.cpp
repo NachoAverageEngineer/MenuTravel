@@ -210,19 +210,22 @@ namespace {
 
         director->pushScene(scene);
 
-        auto runningScene = director->getRunningScene();
-        if (!runningScene) return;
+        // Schedule on next frame so the scene has time to finish loading
+        Loader::get()->queueInMainThread([id]() {
+            auto director = cocos2d::CCDirector::sharedDirector();
+            if (!director) return;
 
-        auto searchLayer =
-            findNodeOfTypeRecursive<LevelSearchLayer>(runningScene);
+            auto runningScene = director->getRunningScene();
+            if (!runningScene) return;
 
-        if (!searchLayer) return;
-        if (!searchLayer->m_searchInput) return;
+            auto searchLayer = findNodeOfTypeRecursive<LevelSearchLayer>(runningScene);
+            if (!searchLayer) return;
+            if (!searchLayer->m_searchInput) return;
 
-        auto idString = std::to_string(id);
-
-        searchLayer->m_searchInput->setString(idString.c_str());
-        searchLayer->onSearch(nullptr);
+            auto idString = std::to_string(id);
+            searchLayer->m_searchInput->setString(idString.c_str());
+            searchLayer->onSearch(nullptr);
+            });
     }
 
     static void openEditorLevelByEditorId(int editorId) {
