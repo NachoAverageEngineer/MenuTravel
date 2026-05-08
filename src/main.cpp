@@ -21,8 +21,6 @@
 
 using namespace geode::prelude;
 
-static int s_pendingSearchId = 0;
-
 namespace {
     static bool hasNodeOfTypeRecursive(
         cocos2d::CCNode* node,
@@ -39,26 +37,6 @@ namespace {
         }
 
         return false;
-    }
-
-    template <class T>
-    static T* findNodeOfTypeRecursive(cocos2d::CCNode* node) {
-        if (!node) return nullptr;
-
-        if (auto casted = typeinfo_cast<T*>(node)) {
-            return casted;
-        }
-
-        auto children = node->getChildren();
-        if (!children) return nullptr;
-
-        for (auto* child : CCArrayExt<cocos2d::CCNode*>(children)) {
-            if (auto found = findNodeOfTypeRecursive<T>(child)) {
-                return found;
-            }
-        }
-
-        return nullptr;
     }
 
     static bool isInAttemptUnpaused() {
@@ -195,26 +173,6 @@ namespace {
         return tryParseInt(input, outId);
     }
 
-    static bool shouldSearchOnlineLevelsInstead() {
-        return Mod::get()->getSettingValue<bool>(
-            "search-level-instead"
-        );
-    }
-
-    static void searchOnlineLevelById(int id) {
-        if (id <= 0) return;
-
-        auto director = cocos2d::CCDirector::sharedDirector();
-        if (!director) return;
-
-        s_pendingSearchId = id;
-
-        auto scene = LevelSearchLayer::scene(0);
-        if (!scene) return;
-
-        director->pushScene(scene);
-    }
-
     static void openEditorLevelByEditorId(int editorId) {
         if (editorId <= 0) return;
 
@@ -230,7 +188,7 @@ namespace {
         director->replaceScene(scene);
     }
 
-    static void openOnlineLevelDirectlyById(int id) {
+    static void openOnlineLevelById(int id) {
         if (id <= 0) return;
 
         auto director = cocos2d::CCDirector::sharedDirector();
@@ -249,15 +207,6 @@ namespace {
         if (auto manager = GameLevelManager::sharedState()) {
             manager->downloadLevel(id, false, 0);
         }
-    }
-
-    static void openOnlineLevelById(int id) {
-        if (shouldSearchOnlineLevelsInstead()) {
-            searchOnlineLevelById(id);
-            return;
-        }
-
-        openOnlineLevelDirectlyById(id);
     }
 
     static std::string getSlotValue(int slot) {
@@ -321,24 +270,6 @@ namespace {
         }
     }
 }
-
-class $modify(LevelSearchLayer) {
-    bool init(int type) {
-        if (!LevelSearchLayer::init(type)) return false;
-
-        if (s_pendingSearchId > 0) {
-            int id = s_pendingSearchId;
-            s_pendingSearchId = 0;
-
-            if (m_searchInput) {
-                m_searchInput->setString(std::to_string(id).c_str());
-                onSearch(nullptr);
-            }
-        }
-
-        return true;
-    }
-};
 
 $execute{
     auto bind = [](char const* id) {

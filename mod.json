@@ -7,7 +7,7 @@
 	},
 	"id": "nachoaverage.menutravel",
 	"name": "MenuTravel",
-	"version": "v4.1.1",
+	"version": "v4.2.0",
 	"developer": "NachoAverage",
 	"description": "Travel to menus and levels in one button!",
 	"tags": [ "gameplay", "enhancement", "interface", "utility" ],
@@ -27,12 +27,6 @@
 			"type": "keybind",
 			"name": "Travel: Main Menu",
 			"default": []
-		},
-		"search-level-instead": {
-			"type": "bool",
-			"name": "Search Level Instead Of Opening",
-			"description": "Searches the level ID instead of opening it.",
-			"default": true
 		},
 
 		"level-id-1": {
