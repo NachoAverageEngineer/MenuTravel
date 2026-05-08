@@ -7,7 +7,7 @@
 	},
 	"id": "nachoaverage.menutravel",
 	"name": "MenuTravel",
-	"version": "v4.1.0",
+	"version": "v4.1.1",
 	"developer": "NachoAverage",
 	"description": "Travel to menus and levels in one button!",
 	"tags": [ "gameplay", "enhancement", "interface", "utility" ],

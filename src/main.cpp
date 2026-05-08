@@ -21,6 +21,8 @@
 
 using namespace geode::prelude;
 
+static int s_pendingSearchId = 0;
+
 namespace {
     static bool hasNodeOfTypeRecursive(
         cocos2d::CCNode* node,
@@ -205,27 +207,12 @@ namespace {
         auto director = cocos2d::CCDirector::sharedDirector();
         if (!director) return;
 
+        s_pendingSearchId = id;
+
         auto scene = LevelSearchLayer::scene(0);
         if (!scene) return;
 
         director->pushScene(scene);
-
-        // Schedule on next frame so the scene has time to finish loading
-        Loader::get()->queueInMainThread([id]() {
-            auto director = cocos2d::CCDirector::sharedDirector();
-            if (!director) return;
-
-            auto runningScene = director->getRunningScene();
-            if (!runningScene) return;
-
-            auto searchLayer = findNodeOfTypeRecursive<LevelSearchLayer>(runningScene);
-            if (!searchLayer) return;
-            if (!searchLayer->m_searchInput) return;
-
-            auto idString = std::to_string(id);
-            searchLayer->m_searchInput->setString(idString.c_str());
-            searchLayer->onSearch(nullptr);
-            });
     }
 
     static void openEditorLevelByEditorId(int editorId) {
@@ -334,6 +321,24 @@ namespace {
         }
     }
 }
+
+class $modify(LevelSearchLayer) {
+    bool init(int type) {
+        if (!LevelSearchLayer::init(type)) return false;
+
+        if (s_pendingSearchId > 0) {
+            int id = s_pendingSearchId;
+            s_pendingSearchId = 0;
+
+            if (m_searchInput) {
+                m_searchInput->setString(std::to_string(id).c_str());
+                onSearch(nullptr);
+            }
+        }
+
+        return true;
+    }
+};
 
 $execute{
     auto bind = [](char const* id) {
